@@ -139,7 +139,7 @@ Once the user approves:
 
 ## Style Presets
 
-A **style preset** is a named JSON file that captures a user's visual preferences — palette, shape vocabulary, fonts, edge style. When a preset is active, it fully replaces the built-in conventions in the `### Applying a preset` subsection above.
+A **style preset** is a named JSON file that captures a user's visual preferences — palette, shape vocabulary, fonts, edge style. When a preset is active, it fully replaces the built-in conventions described in the `### Applying a preset` subsection below (under `## Draw.io XML Structure`).
 
 **Locations, in lookup order:**
 1. `~/.drawio-skill/styles/<name>.json` — user presets (survive `git pull`).
@@ -157,20 +157,19 @@ Only user presets can have `"default": true`. When the user says *"make `<built-
 
 **Dispatch by file extension:**
 - `.drawio`, `.xml` → XML path
-- `.png`, `.jpg`, `.jpeg` → image path
+- `.png`, `.jpg`, `.jpeg`, `.svg` (rasterized flat image) → image path
 
 **Steps:**
 
 1. **Load the extraction reference.** Read `references/style-extraction.md` into context.
 2. **Extract** following the XML path or image path procedure in the reference.
-3. **Lowercase the name.** Apply `name.toLowercase()` (or equivalent) to the user-provided preset name before writing any file.
-4. **Build a candidate preset** and write it to `/tmp/drawio-preset-<name>.json`. Do **not** save to `~/.drawio-skill/styles/<name>.json` yet.
-5. **Render a sample** using the sample-diagram skeleton in `references/style-extraction.md`, parameterized by the candidate preset. Export PNG to `./preset-<name>-sample.png` using the same `draw.io -x -f png -e -s 2 -o ./preset-<name>-sample.png /tmp/drawio-preset-<name>.drawio` command the main workflow uses.
-6. **Show the user:**
+3. **Normalize and build candidate.** Convert the user-provided preset name to lowercase. Use this normalized name for ALL file paths in this flow. Build the candidate preset JSON and write it to `/tmp/drawio-preset-<name>.json` (where `<name>` is the already-normalized name). Do **not** save to `~/.drawio-skill/styles/<name>.json` yet.
+4. **Render a sample** using the sample-diagram skeleton in `references/style-extraction.md`, parameterized by the candidate preset. Export PNG to `./preset-<name>-sample.png` using the same `draw.io -x -f png -e -s 2 -o ./preset-<name>-sample.png /tmp/drawio-preset-<name>.drawio` command the main workflow uses.
+5. **Show the user:**
    - Preset summary table (palette hex values, shapes per role, font, edge style, extras).
    - The sample PNG path (and embed the image if the environment supports it).
    - Provenance line: `source.type`, `source.path`, `extracted_at`, `confidence`.
-7. **Wait for approval:**
+6. **Wait for approval:**
    - "save" / "looks good" → write candidate to `~/.drawio-skill/styles/<name>.json`. Create `~/.drawio-skill/styles/` if it doesn't exist. Delete tempfile and sample PNG.
    - "change `<field>` to `<value>`" → edit the in-memory candidate, re-render, re-ask.
    - "cancel" / "abort" / "no" → delete tempfile and sample PNG; nothing saved.
@@ -186,11 +185,13 @@ Only user presets can have `"default": true`. When the user says *"make `<built-
 | Extraction yields <3 distinct color pairs | Continue; mark `confidence: "low"` (image) or `"medium"` (XML); warn in summary. |
 | Preset name collides with existing user preset | Ask: overwrite, or pick a new name. |
 | Preset name collides with a built-in preset | Save to user dir (shadows the built-in); warn once. |
-| Sample render fails | Still show summary; note "could not render sample — saving on your OK anyway". |
+| Sample render fails | Still show summary; note "could not render sample — saving on your OK anyway". Do not block. |
 
 ### Management operations
 
 All operations are natural language — no slash commands.
+
+*Apply name normalisation (lowercase) to all `<name>`, `<a>`, `<b>` arguments before any file operation.*
 
 | User says | Agent does |
 |---|---|
