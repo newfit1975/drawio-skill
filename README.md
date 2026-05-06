@@ -142,10 +142,14 @@ xvfb-run -a drawio --version
 ### Claude Code
 
 ```bash
-# Global install (available in all projects)
+# Plugin marketplace (recommended)
+# In Claude Code: /plugin marketplace add Agents365-ai/drawio-skill
+# Then: /plugin install drawio
+
+# Manual global install
 git clone https://github.com/Agents365-ai/drawio-skill.git ~/.claude/skills/drawio-skill
 
-# Project-level install
+# Manual project-level install
 git clone https://github.com/Agents365-ai/drawio-skill.git .claude/skills/drawio-skill
 ```
 

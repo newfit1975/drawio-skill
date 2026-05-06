@@ -142,10 +142,14 @@ xvfb-run -a drawio --version
 ### Claude Code
 
 ```bash
-# 全局安装（所有项目可用）
+# 插件市场安装（推荐）
+# 在 Claude Code 中输入：/plugin marketplace add Agents365-ai/drawio-skill
+# 然后：/plugin install drawio
+
+# 手动全局安装（所有项目可用）
 git clone https://github.com/Agents365-ai/drawio-skill.git ~/.claude/skills/drawio-skill
 
-# 项目级安装
+# 手动项目级安装
 git clone https://github.com/Agents365-ai/drawio-skill.git .claude/skills/drawio-skill
 ```
 
