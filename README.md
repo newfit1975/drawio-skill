@@ -162,4 +162,4 @@ If this skill helps you, consider supporting the author:
 
 ## 📄 License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](LICENSE)

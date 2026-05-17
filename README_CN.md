@@ -161,4 +161,4 @@ Skill 会自动规划布局、生成 `.drawio` XML、导出为你选择的格式
 
 ## 📄 License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](LICENSE)
