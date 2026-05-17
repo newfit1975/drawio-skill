@@ -156,18 +156,18 @@ The skill extracts colors, shapes, fonts, and edge style, renders a preview, and
 
 | Feature | drawio-skill | [jgraph/drawio-mcp](https://github.com/jgraph/drawio-mcp) (official)<br>![](https://img.shields.io/github/stars/jgraph/drawio-mcp?style=flat-square&logo=github) | [bahayonghang/drawio-skills](https://github.com/bahayonghang/drawio-skills)<br>![](https://img.shields.io/github/stars/bahayonghang/drawio-skills?style=flat-square&logo=github) | [GBSOSS/ai-drawio](https://github.com/GBSOSS/ai-drawio)<br>![](https://img.shields.io/github/stars/GBSOSS/ai-drawio?style=flat-square&logo=github) |
 |---|---|---|---|---|
-| **Approach** | Pure SKILL.md | SKILL.md / MCP / Project | YAML DSL + MCP | Plugin + browser |
-| **Dependencies** | draw.io desktop only | draw.io desktop | MCP server (`npx`) | Browser + local server |
-| **Multi-agent** | ✅ 6 platforms | ❌ Claude Code only | ❌ Claude Code only | ❌ |
-| **Self-check + auto-fix** | ✅ 2-round | ❌ | ❌ | ❌ screenshot only |
+| **Approach** | Pure SKILL.md | SKILL.md / MCP / Project | YAML DSL + CLI (MCP optional) | Claude Code plugin |
+| **Dependencies** | draw.io desktop only | draw.io desktop | draw.io desktop (MCP optional) | draw.io plugin + browser |
+| **Multi-agent** | ✅ 6 platforms | ❌ Claude apps only | ✅ Claude / Gemini / Codex | ❌ Claude Code only |
+| **Self-check + auto-fix** | ✅ 2-round (reads PNG) | ❌ | ✅ validation + strict mode | ❌ screenshot only |
 | **Iterative review** | ✅ 5-round loop | ❌ generate once | ✅ 3 workflows | ❌ |
-| **Diagram presets** | ✅ 6 types | ❌ | ❌ | ❌ |
+| **Diagram presets** | ✅ 6 types | ❌ | ✅ paper-mode classifier | ❌ |
 | **ML/DL diagrams** | ✅ tensor shapes, layer colors | ❌ | ❌ | ❌ |
-| **Color system** | ✅ 7-color semantic | ❌ | ✅ 5 themes | ❌ |
-| **Browser fallback** | ✅ diagrams.net URL | ❌ | ❌ | ❌ |
-| **Zero-config** | ✅ copy `skills/drawio-skill/` | ✅ | ❌ needs `npx` | ❌ needs plugin install |
+| **Color system** | ✅ 7-color semantic | ❌ | ✅ 6 themes | ❌ |
+| **Browser fallback** | ✅ diagrams.net URL | ❌ inline preview only | ✅ via optional MCP | ✅ diagrams.net viewer (primary) |
+| **Zero-config** | ✅ copy `skills/drawio-skill/` | ✅ | ✅ desktop-only mode | ❌ needs plugin install |
 
-Full 18-row comparison + key-advantages summary in [docs/COMPARISON.md](docs/COMPARISON.md).
+Full comparison + key-advantages summary in [docs/COMPARISON.md](docs/COMPARISON.md). _Last audited against competitor READMEs on 2026-05-17 — please open an issue or PR if anything is out of date._
 
 ## 📚 Documentation
 

@@ -26,23 +26,25 @@
 
 | 功能 | 本 skill | [jgraph/drawio-mcp](https://github.com/jgraph/drawio-mcp)（官方）![](https://img.shields.io/github/stars/jgraph/drawio-mcp?style=flat-square&logo=github) | [bahayonghang/drawio-skills](https://github.com/bahayonghang/drawio-skills) ![](https://img.shields.io/github/stars/bahayonghang/drawio-skills?style=flat-square&logo=github) | [GBSOSS/ai-drawio](https://github.com/GBSOSS/ai-drawio) ![](https://img.shields.io/github/stars/GBSOSS/ai-drawio?style=flat-square&logo=github) |
 |---------|-----------|---------------|-------------------|--------------|
-| **方式** | 纯 SKILL.md | SKILL.md / MCP / Project | YAML DSL + MCP | 插件 + 浏览器 |
-| **依赖** | 仅 draw.io 桌面版 | draw.io 桌面版 | MCP 服务（`npx`） | 浏览器 + 本地服务 |
-| **多智能体** | ✅ 6 个平台 | ❌ 仅 Claude Code | ❌ 仅 Claude Code | ❌ |
-| **自检** | ✅ 2 轮自动修复 | ❌ | ❌ | ❌ 截图 |
-| **迭代审查** | ✅ 5 轮循环 | ❌ 一次生成 | ✅ 3 种工作流 | ❌ |
-| **布局指南** | ✅ 按复杂度分级 + 网格对齐 | ✅ 基础间距 | ❌ 依赖 MCP | ❌ |
-| **图表预设** | ✅ 6 种（ERD、UML、序列、架构、ML、流程） | ❌ | ❌ | ❌ |
+| **方式** | 纯 SKILL.md | SKILL.md / MCP / Project | YAML DSL + CLI（MCP 可选） | Claude Code 插件 |
+| **依赖** | 仅 draw.io 桌面版 | draw.io 桌面版 | draw.io 桌面版（MCP 可选） | draw.io 插件 + 浏览器 |
+| **多智能体** | ✅ 6 个平台 | ❌ 仅 Claude 系列 | ✅ Claude / Gemini / Codex | ❌ 仅 Claude Code |
+| **自检** | ✅ 2 轮视觉自检（读取 PNG） | ❌ | ✅ 校验 + 严格模式 | ❌ 仅截图 |
+| **迭代审查** | ✅ 5 轮循环 | ❌ 一次生成 | ✅ 3 种工作流（create/edit/replicate） | ❌ |
+| **布局指南** | ✅ 按复杂度分级 + 网格对齐 | ✅ 基础间距 | ✅ design-system | ❌ |
+| **图表预设** | ✅ 6 种（ERD、UML、序列、架构、ML、流程） | ❌ | ✅ 论文模式分类（架构/路线图/工作流） | ❌ |
 | **动画连线** | ✅ `flowAnimation=1` | ❌ | ❌ | ❌ |
 | **ML/DL 图** | ✅ 张量标注、层配色 | ❌ | ❌ | ❌ |
-| **配色系统** | ✅ 7 色语义 | ❌ | ✅ 5 种主题 | ❌ |
+| **配色系统** | ✅ 7 色语义 | ❌ | ✅ 6 种主题 | ❌ |
 | **容器/分组** | ✅ swimlane + group | ✅ 详细 | ❌ | ❌ |
 | **嵌入式导出** | ✅ `--embed-diagram` | ✅ | ❌ | ❌ |
 | **连线路由** | ✅ 走廊 + waypoints | ✅ 箭头间距规则 | ❌ | ❌ |
-| **浏览器降级** | ✅ diagrams.net URL | ❌ | ❌ | ❌ |
-| **自动启动** | ✅ 打开桌面版 | ❌ | ❌ | ❌ |
-| **云图标** | AWS 基础 | ❌ | ✅ AWS/GCP/Azure/K8s | ❌ |
-| **零配置** | ✅ 复制 skills/drawio-skill/ | ✅ | ❌ 需要 `npx` | ❌ 需安装插件 |
+| **浏览器降级** | ✅ diagrams.net URL | ❌ 仅内联预览 | ✅ 通过可选 MCP | ✅ diagrams.net viewer（主要） |
+| **自动启动** | ✅ 打开桌面版 | ❌ | ❌ | ✅ 打开 Chrome |
+| **云图标** | AWS 基础 | ❌ | ✅ AWS/GCP/Azure/K8s | ✅ AWS 基础 |
+| **零配置** | ✅ 复制 skills/drawio-skill/ | ✅ | ✅ 桌面版模式 | ❌ 需安装插件 |
+
+_最近一次依据各 repo README 核查：2026-05-17。如有出入欢迎提 issue / PR 修正 —— 竞品在演进，表格的准确性依赖社区帮助。_
 
 ## 核心优势
 
